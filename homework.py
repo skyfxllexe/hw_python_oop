@@ -10,6 +10,7 @@ class InfoMessage:
 
     def get_message(self):
         types = {
+            'TR': 'Training',
             'SWM': 'Swimming',
             'RUN': 'Running',
             'WLK': 'SportsWalking'
@@ -26,6 +27,7 @@ M_IN_KM: int = 1000
 
 class Training:
     """Базовый класс тренировки."""
+    LEN_STEP = 0
 
     def __init__(self,
                  action: int,
@@ -38,19 +40,19 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        pass
+        return self.action * self.LEN_STEP / M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        pass
+        return self.get_distance() / self.duration
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        pass
+        return 0.0
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        pass
+        return InfoMessage("TR", self)
 
 
 class Running(Training):
