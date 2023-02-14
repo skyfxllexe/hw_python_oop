@@ -28,6 +28,7 @@ M_IN_KM: int = 1000
 class Training:
     """Базовый класс тренировки."""
     LEN_STEP: float = 0.65
+    M_IN_KM: int = 1000
 
     def __init__(self,
                  action: int,
@@ -85,6 +86,7 @@ class SportsWalking(Training):
     cmf: float = 0.035
     cms: float = 0.029
     newconst: float = 0.278
+    newconst2: int = 100
 
     def __init__(self,
                  action: float,
@@ -106,8 +108,9 @@ class SportsWalking(Training):
         cmf: float = 0.035
         cms: float = 0.029
         newconst: float = 0.278
+        newconst2: int = 100
         avgspeed: float = (self.get_mean_speed() * newconst) ** 2
-        return ((cmf * self.weight + (avgspeed / (self.height / 100))
+        return ((cmf * self.weight + (avgspeed / (self.height / newconst2))
                  * cms * self.weight) * self.duration * 60)
 
     def show_training_info(self) -> InfoMessage:
@@ -118,6 +121,7 @@ class Swimming(Training):
     """Тренировка: плавание."""
     cmf: float = 1.1
     sm: int = 2
+    LEN_STEP: float = 1.38
 
     def __init__(self,
                  action: float,
