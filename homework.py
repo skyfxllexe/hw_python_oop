@@ -14,13 +14,19 @@ class InfoMessage:
         self.calories = calories
 
     def get_message(self):
-        types = {
-            'TR': 'Training',
-            'SWM': 'Swimming',
-            'RUN': 'Running',
-            'WLK': 'SportsWalking'
-        }
-        return (f'Тип тренировки: {types[self.training_type]};\n'
+        if self.training_type == 'SWM':
+            return (f'Тип тренировки: Swimming;\n'
+                    f'Длительность: {float(self.duration):.3f} ч.;\n'
+                    f'Дистанция: {float(self.distance):.3f} км;\n'
+                    f'Ср. скорость: {float(self.speed):.3f} км/ч;\n'
+                    f'Потрачено ккал: {float(self.calories):.3f}.\n')
+        if self.training_type == 'RUN':
+            return (f'Тип тренировки: Running;\n'
+                    f'Длительность: {float(self.duration):.3f} ч.;\n'
+                    f'Дистанция: {float(self.distance):.3f} км;\n'
+                    f'Ср. скорость: {float(self.speed):.3f} км/ч;\n'
+                    f'Потрачено ккал: {float(self.calories):.3f}.\n')
+        return (f'Тип тренировки: SportsWalking;\n'
                 f'Длительность: {float(self.duration):.3f} ч.;\n'
                 f'Дистанция: {float(self.distance):.3f} км;\n'
                 f'Ср. скорость: {float(self.speed):.3f} км/ч;\n'
