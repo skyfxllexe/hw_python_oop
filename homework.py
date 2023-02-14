@@ -27,7 +27,7 @@ M_IN_KM: int = 1000
 
 class Training:
     """Базовый класс тренировки."""
-    LEN_STEP = 0
+    LEN_STEP: float = 0.65
 
     def __init__(self,
                  action: int,
@@ -57,8 +57,8 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
-    CMF: int = 18
-    CMS: float = 1.79
+    cmf: int = 18
+    cms: float = 1.79
 
     def __init__(self, action: float, duration: float, weight: float) -> None:
         super().__init__(action, duration, weight)
@@ -71,9 +71,9 @@ class Running(Training):
         return self.get_distance() / self.duration
 
     def get_spent_calories(self) -> float:
-        CMF: int = 18
-        CMS: float = 1.79
-        return ((CMF * self.get_mean_speed() + CMS)
+        cmf: int = 18
+        cms: float = 1.79
+        return ((cmf * self.get_mean_speed() + cms)
                 * self.weight / M_IN_KM * self.duration * 60)
 
     def show_training_info(self) -> InfoMessage:
@@ -82,8 +82,9 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    CMF: float = 0.035
-    CMS: float = 0.029
+    cmf: float = 0.035
+    cms: float = 0.029
+    newconst: float = 0.278
 
     def __init__(self,
                  action: float,
@@ -102,11 +103,12 @@ class SportsWalking(Training):
         return self.get_distance() / self.duration
 
     def get_spent_calories(self) -> float:
-        CMF: float = 0.035
-        CMS: float = 0.029
-        avgSpeed: float = (self.get_mean_speed() / 3.6) ** 2
-        return ((CMF * self.weight + (avgSpeed / (self.height / 100))
-                 * CMS * self.weight) * self.duration * 60)
+        cmf: float = 0.035
+        cms: float = 0.029
+        newconst: float = 0.278
+        avgspeed: float = (self.get_mean_speed() * newconst) ** 2
+        return ((cmf * self.weight + (avgspeed / (self.height / 100))
+                 * cms * self.weight) * self.duration * 60)
 
     def show_training_info(self) -> InfoMessage:
         return InfoMessage("WLK", self)
@@ -114,7 +116,8 @@ class SportsWalking(Training):
 
 class Swimming(Training):
     """Тренировка: плавание."""
-    CMF: float = 1.1
+    cmf: float = 1.1
+    sm: int = 2
 
     def __init__(self,
                  action: float,
@@ -135,8 +138,9 @@ class Swimming(Training):
         return self.length_pool * self.count_pool / M_IN_KM / self.duration
 
     def get_spent_calories(self) -> float:
-        CMF: float = 1.1
-        return (self.get_mean_speed() + CMF) * 2 * self.weight * self.duration
+        cmf: float = 1.1
+        sm: int = 2
+        return (self.get_mean_speed() + cmf) * sm * self.weight * self.duration
 
     def show_training_info(self) -> InfoMessage:
         return InfoMessage("SWM", self)
