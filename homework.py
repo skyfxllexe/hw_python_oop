@@ -57,6 +57,9 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
+    CMF: int = 18
+    CMS: float = 1.79
+
     def __init__(self, action: float, duration: float, weight: float) -> None:
         super().__init__(action, duration, weight)
         self.LEN_STEP: float = 0.65
@@ -79,6 +82,9 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
+    CMF: float = 0.035
+    CMS: float = 0.029
+
     def __init__(self,
                  action: float,
                  duration: float,
@@ -108,6 +114,8 @@ class SportsWalking(Training):
 
 class Swimming(Training):
     """Тренировка: плавание."""
+    CMF: float = 1.1
+
     def __init__(self,
                  action: float,
                  duration: float,
