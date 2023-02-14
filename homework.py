@@ -15,22 +15,22 @@ class InfoMessage:
 
     def get_message(self):
         if self.training_type == 'SWM':
-            return (f'Тип тренировки: Swimming;\n'
-                    f'Длительность: {float(self.duration):.3f} ч.;\n'
-                    f'Дистанция: {float(self.distance):.3f} км;\n'
-                    f'Ср. скорость: {float(self.speed):.3f} км/ч;\n'
-                    f'Потрачено ккал: {float(self.calories):.3f}.\n')
+            return str((f'Тип тренировки: Swimming; '
+                        f'Длительность: {float(self.duration):.3f} ч.; '
+                        f'Дистанция: {float(self.distance):.3f} км; '
+                        f'Ср. скорость: {float(self.speed):.3f} км/ч; '
+                        f'Потрачено ккал: {float(self.calories):.3f}.'))
         if self.training_type == 'RUN':
-            return (f'Тип тренировки: Running;\n'
-                    f'Длительность: {float(self.duration):.3f} ч.;\n'
-                    f'Дистанция: {float(self.distance):.3f} км;\n'
-                    f'Ср. скорость: {float(self.speed):.3f} км/ч;\n'
-                    f'Потрачено ккал: {float(self.calories):.3f}.\n')
-        return (f'Тип тренировки: SportsWalking;\n'
-                f'Длительность: {float(self.duration):.3f} ч.;\n'
-                f'Дистанция: {float(self.distance):.3f} км;\n'
-                f'Ср. скорость: {float(self.speed):.3f} км/ч;\n'
-                f'Потрачено ккал: {float(self.calories):.3f}.\n')
+            return str((f'Тип тренировки: Running; '
+                        f'Длительность: {float(self.duration):.3f} ч.; '
+                        f'Дистанция: {float(self.distance):.3f} км; '
+                        f'Ср. скорость: {float(self.speed):.3f} км/ч; '
+                        f'Потрачено ккал: {float(self.calories):.3f}.'))
+        return str((f'Тип тренировки: SportsWalking; '
+                    f'Длительность: {float(self.duration):.3f} ч.; '
+                    f'Дистанция: {float(self.distance):.3f} км; '
+                    f'Ср. скорость: {float(self.speed):.3f} км/ч; '
+                    f'Потрачено ккал: {float(self.calories):.3f}.'))
 
 
 M_IN_KM: int = 1000
