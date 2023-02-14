@@ -13,7 +13,7 @@ class InfoMessage:
         self.speed = speed
         self.calories = calories
 
-    def get_message(self):
+    def get_message(self) -> str:
         if self.training_type == 'SWM':
             return str((f'Тип тренировки: Swimming; '
                         f'Длительность: {float(self.duration):.3f} ч.; '
