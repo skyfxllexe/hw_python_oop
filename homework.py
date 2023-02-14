@@ -14,23 +14,17 @@ class InfoMessage:
         self.calories = calories
 
     def get_message(self) -> str:
-        if self.training_type == 'SWM':
-            return str((f'Тип тренировки: Swimming; '
-                        f'Длительность: {float(self.duration):.3f} ч.; '
-                        f'Дистанция: {float(self.distance):.3f} км; '
-                        f'Ср. скорость: {float(self.speed):.3f} км/ч; '
-                        f'Потрачено ккал: {float(self.calories):.3f}.'))
-        if self.training_type == 'RUN':
-            return str((f'Тип тренировки: Running; '
-                        f'Длительность: {float(self.duration):.3f} ч.; '
-                        f'Дистанция: {float(self.distance):.3f} км; '
-                        f'Ср. скорость: {float(self.speed):.3f} км/ч; '
-                        f'Потрачено ккал: {float(self.calories):.3f}.'))
-        return str((f'Тип тренировки: SportsWalking; '
-                    f'Длительность: {float(self.duration):.3f} ч.; '
-                    f'Дистанция: {float(self.distance):.3f} км; '
-                    f'Ср. скорость: {float(self.speed):.3f} км/ч; '
-                    f'Потрачено ккал: {float(self.calories):.3f}.'))
+        types = {
+            "TR": "Training",
+            "RUN": "Running",
+            "WLK": "SportsWalking",
+            "SWM": "Swimming"
+        }
+        return (f'Тип тренировки: {types[self.training_type]}; '
+                f'Длительность: {float(self.duration):.3f} ч.; '
+                f'Дистанция: {float(self.distance):.3f} км; '
+                f'Ср. скорость: {float(self.speed):.3f} км/ч; '
+                f'Потрачено ккал: {float(self.calories):.3f}.')
 
 
 M_IN_KM: int = 1000
