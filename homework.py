@@ -29,6 +29,7 @@ class Training:
     """Базовый класс тренировки."""
     LEN_STEP: float = 0.65
     M_IN_KM: int = 1000
+    const: int = 60
 
     def __init__(self,
                  action: int,
