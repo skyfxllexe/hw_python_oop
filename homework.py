@@ -85,6 +85,7 @@ class SportsWalking(Training):
     CMF: float = 0.035
     CMS: float = 0.029
     METRPS: float = 0.278
+    METRTOSM: int = 100
 
     def __init__(self,
                  action: float,
